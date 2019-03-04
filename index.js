@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-mongoose.connect(
+mongoose.connect(process.env.MONGODB_URI ||
     "mongodb://localhost/todo-list",
     { useNewUrlParser: true }
 );
@@ -96,4 +96,4 @@ app.post("/delete", async (req, res) => {
 });
 
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000)
